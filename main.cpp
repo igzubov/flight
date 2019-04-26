@@ -6,7 +6,7 @@ bool checkCollision(std::vector<float> &pos1, std::vector<float> &pos2, float r)
     float dist = sqrt(pow(pos1.at(0) - pos2.at(0), 2) + pow(pos1.at(1) - pos2.at(1), 2));
 
     if (dist <= r) {
-        std::cout << "Target reached" << std::endl;
+        std::cout << "Target reached in " << dist << " distance" << std::endl;
         return true;
     }
     return false;
@@ -20,9 +20,13 @@ void step(std::vector<float> &pos, std::vector<float> &vel, float &dt) {
 void runModel(std::vector<float> &aircraftPos, std::vector<float> &aircraftVel, std::vector<float> &missilePos,
               std::vector<float> &missileVel, float dt, float endTime, float r) {
     float currTime = 0;
+    std::cout << "Initial conditions - aircraft pos: " << aircraftPos.at(0) << " " << aircraftPos.at(1)
+              << " aircraft vel: " << aircraftVel.at(0) << " " << aircraftVel.at(1) << " missile pos: "
+              << missilePos.at(0) << " " << missilePos.at(1) << " missile vel: " << missileVel.at(0) << " "
+              << missileVel.at(1) << std::endl;
     while (!checkCollision(aircraftPos, missilePos, r) && currTime < endTime) {
         std::cout << "Modeling time: " << currTime << " aircraft pos: " << aircraftPos.at(0) << " " << aircraftPos.at(1)
-                  << " Missile pos: " << missilePos.at(0) << " " << missilePos.at(1) << std::endl;
+                  << " missile pos: " << missilePos.at(0) << " " << missilePos.at(1) << std::endl;
 
         step(aircraftPos, aircraftVel, dt);
         step(missilePos, missileVel, dt);
