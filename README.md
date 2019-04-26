@@ -2,7 +2,7 @@
 Aircraft and missile are flying with the given velocity vectors and initial position.  
 The missile can hit the aircraft if it will be in radius of missile affected area.
 
-## How too use 
+## How to use 
 1. ``` git clone https://github.com/igzubov/flight/ && cd flight ```
 2. ``` mkdir build && cd build ```
 3. ``` cmake .. && make ```
